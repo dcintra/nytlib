@@ -1,9 +1,9 @@
-nytlib
+NYTlib
 ======
 
-NYTlib
+Robert Kuykendall
 
 
 To run the webserver, enter the following into Terminal:
 
- DEBUG=nytlib ./bin/www
+    DEBUG=nytlib ./bin/www
