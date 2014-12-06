@@ -21,8 +21,11 @@
         </div>
         <div class="col-md-9">
 
-            <p>Welcome to <%= title %></p>
+            <h3>Welcome to <%= title %></h3>
 
+            <% for(var i=0; i<books.length; i++) {%>
+                <li><%= books[i].title %></li>
+            <% } %>
         </div>
     </div>
 </body>
