@@ -117,6 +117,7 @@ function getLists(res, lists, index) {
             }
         };
     });
+}
 
 function findBooksFromGoodReads(query,res) {
 
