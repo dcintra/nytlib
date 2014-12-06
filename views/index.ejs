@@ -21,13 +21,48 @@
         </div>
         <div class="col-md-9">
 
-            <h3>Bestsellers for <%= title %></h3>
+            <% for(var list_index=0; list_index<lists.length; list_index++) { %>
+                <%
+                    var title = lists[list_index]['title'];
+                    var books = lists[list_index]['books'];
+                %>
 
-            <% for(var i=0; i<parseInt(books.length/3); i++) {%>
-                <div class="row clearfix">
+                <h3>Bestsellers for <%= title %></h3>
+
+                <% for(var i=0; i<parseInt(books.length/3); i++) {%>
+                    <div class="row clearfix">
+                        <div class="col-md-12 column">
+                        <% for(var j=i*3; j<(i*3)+3; j++) {%>
+
+                            <li class="book">
+                                <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <img src="<%= books[j].book_image %>" />
+                                    <div class="caption">
+                                        <h4>
+                                           <%= books[j].title %>
+                                        </h4>
+                                        <h5>
+                                            <%= books[j].author %>
+                                        </h5>
+                                        <p>
+                                            <%= books[j].description %>
+                                        </p>
+                                        <p>
+                                            <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                </div>
+                            </li>
+                        <% } %>
+                        </div>
+                    </div>
+                <% } %>
+                <% if(books.length % 3 != 0) {%>
+                    <div class="row clearfix">
                     <div class="col-md-12 column">
-                    <% for(var j=i*3; j<(i*3)+3; j++) {%>
-                        
+                    <% for(var j=parseInt(books.length/3)*3; j<parseInt(books.length/3)*3 + (books.length % 3); j++) {%>
                         <li class="book">
                             <div class="col-md-4">
                             <div class="thumbnail">
@@ -42,45 +77,17 @@
                                     <p>
                                         <%= books[j].description %>
                                     </p>
-                                    <p>
+                                     <p>
                                         <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-                                    </p> 
+                                    </p>
                                 </div>
                             </div>
                             </div>
                         </li>
                     <% } %>
                     </div>
-                </div>
-            <% } %>
-            <% if(books.length % 3 != 0) {%>
-                <div class="row clearfix">
-                <div class="col-md-12 column">
-                <% for(var j=parseInt(books.length/3)*3; j<parseInt(books.length/3)*3 + (books.length % 3); j++) {%>
-                    <li class="book">
-                        <div class="col-md-4">
-                        <div class="thumbnail">
-                            <img src="<%= books[j].book_image %>" />
-                            <div class="caption">
-                                <h4>
-                                   <%= books[j].title %>
-                                </h4>
-                                <h5>
-                                    <%= books[j].author %>
-                                </h5>
-                                <p>
-                                    <%= books[j].description %>
-                                </p>
-                                 <p>
-                                    <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-                                </p>
-                            </div>
-                        </div>
-                        </div>
-                    </li> 
+                    </div>
                 <% } %>
-                </div>
-                </div>
             <% } %>
         </div>
     </div>

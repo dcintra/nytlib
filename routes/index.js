@@ -58,7 +58,7 @@ var categories = [
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    getLists(res, categories.slice(0, 2), 0);
+    getLists(res, categories.slice(0, 3), 0);
 });
 
 router.get('/list/:slug', function(req, res) {
@@ -106,12 +106,14 @@ function getLists(res, lists, index) {
             var title = jbody.results.display_name;
 
             lists[index] = {
-                books: books,
-                title: title
+                'books': books,
+                'title': title
             }
 
             if (index >= lists.length-1) {
-                res.render('index', lists[0]);
+                res.render('index', {
+                    lists: lists
+                });
             } else {
                 getLists(res, lists, index+1);
             }
