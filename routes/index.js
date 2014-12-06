@@ -7,6 +7,11 @@ router.get('/', function(req, res) {
     getBooks(res, "hardcover-fiction");
 });
 
+router.get('/list/:slug', function(req, res) {
+    var slug = req.params.slug;
+    console.log(slug);
+    getBooks(res, slug);
+});
 
 function getBooks(res, name) {
     base = "http://api.nytimes.com/svc/books/v3/lists/";
@@ -18,12 +23,11 @@ function getBooks(res, name) {
       if (!error && response.statusCode == 200) {
             jbody = JSON.parse(body);
             var books = jbody.results.books;
-            // book_title = books[0].title;
+            var title = jbody.results.display_name;
 
-            console.log(books);
 
             res.render('index', {
-                title: "Hardcover Fiction",
+                title: title,
                 books: books
             });
         };
