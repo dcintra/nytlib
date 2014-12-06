@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
+    <title>Bestsellers</title>
     <%- include partials/head.ejs %>
     <%- include partials/jsdefaults.ejs %>
 </head>
@@ -20,6 +20,37 @@
 
         </div>
         <div class="col-md-9">
+            <nav class="navbar navbar-default" role="navigation">
+              <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Link</a></li> -->
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <% for(var list_index=0; list_index<lists.length; list_index++) { %>
+                            <li><a href="#category_<%= list_index %>"><%= lists[list_index]['title'] %></a></li>
+                        <% } %>
+                       
+                      </ul>
+                    </li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
 
             <% for(var list_index=0; list_index<lists.length; list_index++) { %>
                 <%
@@ -27,17 +58,22 @@
                     var books = lists[list_index]['books'];
                 %>
 
-                <h3>Bestsellers for <%= title %></h3>
+                <div class="row clearfix" id="category_<%= list_index %>"><h3><%= title %></h3></div>
 
                 <% for(var i=0; i<parseInt(books.length/3); i++) {%>
                     <div class="row clearfix">
                         <div class="col-md-12 column">
                         <% for(var j=i*3; j<(i*3)+3; j++) {%>
-
+                            <% 
+                            var book_img = '';
+                            if(books[j].book_image != null ) {
+                                book_img = books[j].book_image
+                            }
+                            %>
                             <li class="book">
                                 <div class="col-md-4">
                                 <div class="thumbnail">
-                                    <img src="<%= books[j].book_image %>" />
+                                    <img src="<%= book_img %>" />
                                     <div class="caption">
                                         <h4>
                                            <%= books[j].title %>
@@ -63,10 +99,17 @@
                     <div class="row clearfix">
                     <div class="col-md-12 column">
                     <% for(var j=parseInt(books.length/3)*3; j<parseInt(books.length/3)*3 + (books.length % 3); j++) {%>
+                        <% 
+                        var book_img = '';
+                        if(books[j].book_image != null ) {
+                            book_img = books[j].book_image
+                        }
+                        %>
+
                         <li class="book">
                             <div class="col-md-4">
                             <div class="thumbnail">
-                                <img src="<%= books[j].book_image %>" />
+                                <img src="<%= book_img %>" />
                                 <div class="caption">
                                     <h4>
                                        <%= books[j].title %>
