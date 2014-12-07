@@ -50,7 +50,7 @@
                                 book_img = books[j].book_image
                             }
                             %>
-                            <li class="book">
+                            <li class="book" data-json="<%-JSON.stringify(books[j]).replace(/"/g, '&quot;') %>">
                                 <div class="col-md-4">
                                 <div class="thumbnail">
                                     <img src="<%= book_img %>" />
@@ -86,7 +86,7 @@
                         }
                         %>
 
-                        <li class="book">
+                        <li class="book" data-json="<%-JSON.stringify(books[j]).replace(/"/g, '&quot;') %>">
                             <div class="col-md-4">
                             <div class="thumbnail">
                                 <img src="<%= book_img %>" />
@@ -112,6 +112,31 @@
                     </div>
                 <% } %>
             <% } %>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-container" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+        <div class="modal-dialog"  style="width:90%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="clearModalContent();">×</button>
+                    <center>
+                        <h4 class="modal-title" id="myModalLabel">
+
+                        </h4>
+                    </center>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix" >
+                        <div class="col-md-12 column" id="modal-rows-user" >
+                        
+                        </div>
+                        <div class="col-md-12 column" id="modal-rows-article" >
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
