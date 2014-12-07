@@ -111,14 +111,14 @@ function findBooksFromGoodReads(query,res) {
     request(goodreads, function (error, response, body) {
       if (!error && response.statusCode == 200) {
 
-           var xmlDoc = libxmljs.parseXml(body);
-           var gchild = xmlDoc.get('//title');
+           // var xmlDoc = libxmljs.parseXml(body);
+           // var gchild = xmlDoc.get('//title');
 
-            // jbody = JSON.parse(body);
-            // var books = jbody.results.books;
-            // book_title = books[0].title;
+           //  // jbody = JSON.parse(body);
+           //  // var books = jbody.results.books;
+           //  // book_title = books[0].title;
 
-            console.log(gchild.text());
+           //  console.log(gchild.text());
 
             // res.render('index', {
             //     title: "Hardcover Fiction",
