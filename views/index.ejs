@@ -4,6 +4,7 @@
     <title>Bestsellers</title>
     <%- include partials/head.ejs %>
     <%- include partials/jsdefaults.ejs %>
+    <script type="text/javascript" src="javascripts/book_modal.js"></script>
 </head>
 <body>
     <div class="container">
@@ -65,7 +66,7 @@
                                             <%= books[j].description %>
                                         </p>
                                         <p>
-                                            <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                            <a class="btn btn-primary" href="#modal-container" onclick='javascript:callBookReview("<%= books[j].title %>","<%= books[j].author %>");' data-toggle="modal">Read Review</a> <a class="btn" href="#">Action</a>
                                         </p>
                                     </div>
                                 </div>
@@ -101,7 +102,7 @@
                                         <%= books[j].description %>
                                     </p>
                                      <p>
-                                        <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                        <a class="btn btn-primary" href="#modal-container" onclick='javascript:callBookReview("<%= books[j].title %>","<%= books[j].author %>");' data-toggle="modal">Read Review</a> <a class="btn" href="#">Action</a>
                                     </p>
                                 </div>
                             </div>
@@ -122,18 +123,13 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="clearModalContent();">×</button>
                     <center>
                         <h4 class="modal-title" id="myModalLabel">
-
+                            Review
                         </h4>
                     </center>
                 </div>
                 <div class="modal-body">
-                    <div class="row clearfix" >
-                        <div class="col-md-12 column" id="modal-rows-user" >
+                    <div class="row clearfix" id="my_modal_contents">
                         
-                        </div>
-                        <div class="col-md-12 column" id="modal-rows-article" >
-                        
-                        </div>
                     </div>
                 </div>
             </div>
