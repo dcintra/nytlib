@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var libxmljs = require("libxmljs");
 
 var categories = [
     "combined-print-and-e-book-nonfiction",
