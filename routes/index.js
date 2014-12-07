@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var parseString = require('xml2js').parseString;
 
 var categories = [
     "combined-print-and-e-book-nonfiction",
@@ -104,27 +105,37 @@ function getLists(res, lists, index) {
 
 function findBooksFromGoodReads(query,res) {
 
-    // query = encodeURI(query);
+    query = encodeURI(query);
     // goodreads = "https://www.goodreads.com/search/index.xml?key=ouR8rzRRu8T2kt6UrrD9w&q="+query;
     goodreads = "https://www.goodreads.com/search.xml?key=ouR8rzRRu8T2kt6UrrD9w&q=Ender%27s+Game"
+
+    console.log(goodreads);
     request(goodreads, function (error, response, body) {
       if (!error && response.statusCode == 200) {
 
-           // var xmlDoc = libxmljs.parseXml(body);
-           // var gchild = xmlDoc.get('//title');
+           parseString(body, function (err, result) {
+                console.log(result.GoodreadsResponse.search[0].results);
 
-           //  // jbody = JSON.parse(body);
-           //  // var books = jbody.results.books;
-           //  // book_title = books[0].title;
+               // var xmlDoc = libxmljs.parseXml(body);
+               // var gchild = xmlDoc.get('//title');
 
-           //  console.log(gchild.text());
+               //  // jbody = JSON.parse(body);
+               //  // var books = jbody.results.books;
+               //  // book_title = books[0].title;
 
-            // res.render('index', {
-            //     title: "Hardcover Fiction",
-            //     books: books
-            // });
+               //  console.log(gchild.text());
+
+                res.render('search', {
+                    // title: "Hardcover Fiction",
+                    // books: books
+                });
+            });
         };
     });
+}
+
+function getSnippetFromGoodReads() {
+    
 }
 
 
