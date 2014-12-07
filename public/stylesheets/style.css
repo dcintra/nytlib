@@ -14,3 +14,7 @@ a {
 .book img {
     max-height: 128px;
 }
+
+#navigation_float {
+    position: fixed;
+}

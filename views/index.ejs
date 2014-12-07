@@ -11,60 +11,40 @@
             <h1>NYT Lib</h1>
         </div>
         <div class="col-md-3">
+            <div id="navigation_float">
+                <h3>Navigation</h3>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Bookshelf</a></li>
+                    <li><a href="#">Bestseller Lists</a></li>
+                </ul>
 
-            <ul class="nav nav-pills nav-stacked">
-                <li><a href="#">Bookshelf</a></li>
-                <li><a href="#">Combined Fiction</a></li>
-                <li><a href="#">Combined Nonfiction</a></li>
-            </ul>
-
+                <h3>Bestseller Lists</h3>
+                <ul class="nav nav-pills nav-stacked">
+                    <% for(var list_index=0; list_index<lists.length; list_index++) { %>
+                        <li><a href="#category_<%= list_index %>"><%= lists[list_index]['title'] %></a></li>
+                    <% } %>
+                </ul>
+            </div>
         </div>
         <div class="col-md-9">
-            <nav class="navbar navbar-default" role="navigation">
-              <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="#">Brand</a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav">
-                    <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Link</a></li> -->
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <% for(var list_index=0; list_index<lists.length; list_index++) { %>
-                            <li><a href="#category_<%= list_index %>"><%= lists[list_index]['title'] %></a></li>
-                        <% } %>
-                       
-                      </ul>
-                    </li>
-                  </ul>
-                </div><!-- /.navbar-collapse -->
-              </div><!-- /.container-fluid -->
-            </nav>
-
             <% for(var list_index=0; list_index<lists.length; list_index++) { %>
                 <%
                     var title = lists[list_index]['title'];
                     var books = lists[list_index]['books'];
                 %>
+                <div class="col-md-12 column">
 
-                <div class="row clearfix" id="category_<%= list_index %>"><h3><%= title %></h3></div>
+                <div class="row clearfix" id="category_<%= list_index %>">
+                    <div class="col-md-12 column">
+                        <h3><%= title %></h3>
+                    </div>
+                </div>
 
                 <% for(var i=0; i<parseInt(books.length/3); i++) {%>
                     <div class="row clearfix">
                         <div class="col-md-12 column">
                         <% for(var j=i*3; j<(i*3)+3; j++) {%>
-                            <% 
+                            <%
                             var book_img = '';
                             if(books[j].book_image != null ) {
                                 book_img = books[j].book_image
@@ -99,7 +79,7 @@
                     <div class="row clearfix">
                     <div class="col-md-12 column">
                     <% for(var j=parseInt(books.length/3)*3; j<parseInt(books.length/3)*3 + (books.length % 3); j++) {%>
-                        <% 
+                        <%
                         var book_img = '';
                         if(books[j].book_image != null ) {
                             book_img = books[j].book_image
