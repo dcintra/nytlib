@@ -75,6 +75,7 @@ router.get('/search/term=:query', function(req, res) {
 
 });
 
+
 function getLists(res, lists, index) {
     base = "http://api.nytimes.com/svc/books/v3/lists/";
     end = ".json?callback=books&api-key=59a865c91407e86de482eb167653783a%3A8%3A70173232";
