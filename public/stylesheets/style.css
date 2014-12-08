@@ -23,6 +23,24 @@ a {
 	box-shadow: none;
 }
 
+.inner-addon { 
+    position: relative; 
+}
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  right: 0px;
+}
+
+.right-addon .glyphicon { 
+	right: 0px;
+}
+
+.right-addon input { 
+	padding-right: 30px; 
+}
+
 
 
 .book .thumbnail {
