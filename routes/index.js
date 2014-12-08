@@ -120,11 +120,14 @@ function findBooksFromGoodReads(query,res) {
 
     request(goodreads, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-
-           parseString(body, function (err, result) {
+            parseString(body, function (err, result) {
                 // console.log(result.GoodreadsResponse.search[0].results);
 
                     results = result.GoodreadsResponse.search[0].results[0].work;
+                    if(results == null || results == undefined ){
+                        res.render('error', { });
+                        return;
+                    }
                     for (var i = 0; i < results.length; i++) {
                         id = results[i].best_book[0].id[0]._;
                         title = results[i].best_book[0].title[0];
