@@ -1,13 +1,13 @@
  $(document).ready(function(){
 
-	 document.getElementById('searchbar').onkeydown=function(){
-	 	if(window.event.keyCode=='13'){
-	 		var query = document.getElementById('searchbar').value;
-
-	 		console.log(query);
-	 		location.href="http://localhost:3000/search/term="+encodeURI(query)
-	 	};
-	 }
+	//  document.getElementById('searchbar').onkeydown=function(){
+	//  	if(window.event.keyCode=='13'){
+	//  		var query = document.getElementById('searchbar').value;
+     //
+	//  		console.log(query);
+	//  		location.href="http://localhost:3000/search/term="+encodeURI(query)
+	//  	};
+	//  }
 
  // 	$('.side_comment').on('click',function(){
 	// 	$.ajax({
@@ -23,4 +23,4 @@
 	// 		}
 	// 	});
 	// });
- });	
+ });
