@@ -9,7 +9,7 @@ function callAPI(url,method,param){
 	    jsonpCallback: "svc_search_v2_articlesearch",
 	    success: function(response){
 	    	method(response,param);
-	    },  
+	    },
 	});
 }
 
@@ -20,7 +20,7 @@ function callBookReview(title,author){
 }
 
 function callArticleSearch(review_url){
-	var url = 'http://api.nytimes.com/svc/search/v2/articlesearch.jsonp?api-key=' + rup_article_key 
+	var url = 'http://api.nytimes.com/svc/search/v2/articlesearch.jsonp?api-key=' + rup_article_key
 	+ '&fq=web_url:(\"' + review_url + '\")';
 	url = encodeURI(url);
 	callAPI(url,showReview,'')
@@ -51,7 +51,6 @@ function showErrorMsg(){
 }
 
 function showReview(response){
-	
 	var doc = response.response.docs[0];
 	// console.log(doc);
 	var headline = doc.headline.main;
@@ -63,7 +62,7 @@ function showReview(response){
 
 
 	var html_headline = '<h3>' + headline + '</h3>';
-	var img_thumbnail = '<div style=\"text-align: center;border: 2px solid black;width: 150px;height: 150px;margin: 10px auto;overflow: hidden;border-radius: 75px;\"><img src=\"' + img_url 
+	var img_thumbnail = '<div style=\"text-align: center;border: 2px solid black;width: 150px;height: 150px;margin: 10px auto;overflow: hidden;border-radius: 75px;\"><img src=\"' + img_url
 	+ '\" style=\"min-height: 150px;min-width: 150px;\"/></div>'
 	var html_published = 'published:' + pubdate
 	var full_review = 'Read the full review <a href=\"' + doc.web_url +'\">here</a>.'

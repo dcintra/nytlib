@@ -23,102 +23,58 @@
                     <li><a href="#">Bestseller Lists</a></li>
                 </ul>
 
-               
+
             </div>
         </div>
         <div class="col-md-9">
-         
                 <div class="col-md-12 column">
-
-
-
-                <% for(var i=0; i<parseInt(books.length/3); i++) {%>
                     <div class="row clearfix">
-                        <div class="col-md-12 column">
-                        <% for(var j=i*3; j<(i*3)+3; j++) {%>
+                        <% for(var i=0; i<books.length; i++) {%>
                             <%
                             var book_img = '';
-                            if(books[j].book_image != null ) {
-                                book_img = books[j].book_image
+                            if(books[i].book_image != null ) {
+                                book_img = books[i].book_image;
+                            } else {
+                                book_img = "http://placehold.it/470x680&text=Missing%20Cover";
                             }
                             %>
-                            <li class="book">
+                            <li class="book" data-json="<%-JSON.stringify(books[i]).replace(/"/g, '&quot;') %>">
                                 <div class="col-md-4">
-                                <div class="thumbnail" style="background-image: url(<%= book_img %>)">
-                                    <div class="caption">
-                                        <h4>
-                                           <%= books[i].title %>
-                                        </h4>
-                                        <h5>
-                                            <%= books[i].author %>
-                                        </h5>
-                                        <p>
-                                            <a class="btn btn-primary add-to-shelf" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Shelf</a> <a class="btn" href="#modal-container" onclick='javascript:callBookReview("<%= books[i].title %>","<%= books[i].author %>");' data-toggle="modal">Reviews</a>
-                                        </p>
+                                    <div class="thumbnail" style="background-image: url(<%= book_img %>)">
+                                        <div class="caption">
+                                            <h4>
+                                                <%= books[i].title %>
+                                            </h4>
+                                            <h5>
+                                                <%= books[i].author %>
+                                            </h5>
+                                            <p>
+                                                <a class="btn btn-primary add-to-shelf" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Shelf</a> <a class="btn" href="#modal-container" onclick='javascript:callBookReview("<%= books[i].title %>","<%= books[i].author %>");' data-toggle="modal">Reviews</a>
+                                            </p>
+                                        </div>
                                     </div>
-                            </div>
                                 </div>
                             </li>
-                        <% } %>
+                            <% } %>
                         </div>
-                    </div>
-                <% } %>
-                <% if(books.length % 3 != 0) {%>
-                    <div class="row clearfix">
-                    <div class="col-md-12 column">
-                    <% for(var j=parseInt(books.length/3)*3; j<parseInt(books.length/3)*3 + (books.length % 3); j++) {%>
-                        <%
-                        var book_img = '';
-                        if(books[j].book_image != null ) {
-                            book_img = books[j].book_image
-                        }
-                        %>
-
-                        <li class="book" data-json="<%-JSON.stringify(books[j]).replace(/"/g, '&quot;') %>">
-                            <div class="col-md-4">
-                            <div class="thumbnail" style="background-image: url(<%= book_img %>)">
-                                    <div class="caption">
-                                        <h4>
-                                           <%= books[i].title %>
-                                        </h4>
-                                        <h5>
-                                            <%= books[i].author %>
-                                        </h5>
-                                        <p>
-                                            <a class="btn btn-primary add-to-shelf" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Shelf</a> <a class="btn" href="#modal-container" onclick='javascript:callBookReview("<%= books[i].title %>","<%= books[i].author %>");' data-toggle="modal">Reviews</a>
-                                        </p>
-                                    </div>
-                            </div>
-
-                            </div>
-                        </li>
-                    <% } %>
-                    </div>
-                    </div>
-                <% } %> 
-            
+                </div>
         </div>
     </div>
 
     <div class="modal fade" id="modal-container" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
-        <div class="modal-dialog"  style="width:90%;">
+        <div class="modal-dialog" >
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="clearModalContent();">×</button>
                     <center>
                         <h4 class="modal-title" id="myModalLabel">
-
+                            Review
                         </h4>
                     </center>
                 </div>
                 <div class="modal-body">
-                    <div class="row clearfix" >
-                        <div class="col-md-12 column" id="modal-rows-user" >
-                        
-                        </div>
-                        <div class="col-md-12 column" id="modal-rows-article" >
-                        
-                        </div>
+                    <div id="my_modal_contents">
+
                     </div>
                 </div>
             </div>

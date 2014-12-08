@@ -14,9 +14,18 @@ To run the webserver, enter the following into Terminal:
 TODO List
 =========
 
-1. PLaceholder images 
-2. Modify navigation to say bestseller/bookshelf
-3. We need a bookshelf page
-4. We need to be able to add things to local storage (save books to bookshelf)
-5. Modal for reviews and other book info
-6. Hover functionality
+1. 'Add to shelf' only if not on shelf
+2. Fixed top bar
+3. Bestseller as sublist
+4. Align search with logo
+5. Check to see if many lists works
+6. Bookshelf on it's own page
+7. Search button
+8. Reviews sometimes empty but not doing error, aka first gone girl
+9. Look into add to shelf from search
+10. Search navigation
+
+60. Liked books
+70. Currently reading book
+
+99. One bookshelf
