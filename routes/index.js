@@ -126,6 +126,9 @@ function findBooksFromGoodReads(query,res) {
                         title = results[i].best_book[0].title[0];
                         author = results[i].best_book[0].author[0].name[0];
                         imgurl = results[i].best_book[0].image_url[0];
+                        if(imgurl == "https://s.gr-assets.com/assets/nophoto/book/111x148-c93ac9cca649f584bf7c2539d88327a8.png"){
+                            imgurl = "http://placehold.it/470x680&text=Missing%20Cover"
+                        };
 
                         books[i] = {
                                         'id': id,
