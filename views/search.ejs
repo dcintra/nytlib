@@ -7,8 +7,13 @@
 </head>
 <body>
     <div class="container">
-        <div class="col-md-12">
-            <h1>NYT Lib</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <h1>NYT Lib</h1>
+            </div>
+            <div class="col-md-9">
+                <input valutype="text" class="form-control" id="searchbar" placeholder="Search for books by title, author, ISBN" method="POST">
+            </div>
         </div>
         <div class="col-md-3">
             <div id="navigation_float">
@@ -18,10 +23,111 @@
                     <li><a href="#">Bestseller Lists</a></li>
                 </ul>
 
-                
+               
             </div>
         </div>
-        
-       
+        <div class="col-md-9">
+         
+                <div class="col-md-12 column">
+
+
+
+                <% for(var i=0; i<parseInt(books.length/3); i++) {%>
+                    <div class="row clearfix">
+                        <div class="col-md-12 column">
+                        <% for(var j=i*3; j<(i*3)+3; j++) {%>
+                            <%
+                            var book_img = '';
+                            if(books[j].book_image != null ) {
+                                book_img = books[j].book_image
+                            }
+                            %>
+                            <li class="book">
+                                <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <img src="<%= book_img %>" />
+                                    <div class="caption">
+                                        <h4>
+                                           <%= books[j].title %>
+                                        </h4>
+                                        <h5>
+                                            <%= books[j].author %>
+                                        </h5>
+                                      
+                                        <p>
+                                            <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                </div>
+                            </li>
+                        <% } %>
+                        </div>
+                    </div>
+                <% } %>
+                <% if(books.length % 3 != 0) {%>
+                    <div class="row clearfix">
+                    <div class="col-md-12 column">
+                    <% for(var j=parseInt(books.length/3)*3; j<parseInt(books.length/3)*3 + (books.length % 3); j++) {%>
+                        <%
+                        var book_img = '';
+                        if(books[j].book_image != null ) {
+                            book_img = books[j].book_image
+                        }
+                        %>
+
+                        <li class="book" data-json="<%-JSON.stringify(books[j]).replace(/"/g, '&quot;') %>">
+                            <div class="col-md-4">
+                            <div class="thumbnail">
+                                <img src="<%= book_img %>" />
+                                <div class="caption">
+                                    <h4>
+                                       <%= books[j].title %>
+                                    </h4>
+                                    <h5>
+                                        <%= books[j].author %>
+                                    </h5>
+                                    <!-- <p>
+                                        <%= books[j].description %>
+                                    </p> -->
+                                     <p>
+                                        <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                    </p>
+                                </div>
+                            </div>
+                            </div>
+                        </li>
+                    <% } %>
+                    </div>
+                    </div>
+                <% } %> 
+            
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-container" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+        <div class="modal-dialog"  style="width:90%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="clearModalContent();">×</button>
+                    <center>
+                        <h4 class="modal-title" id="myModalLabel">
+
+                        </h4>
+                    </center>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix" >
+                        <div class="col-md-12 column" id="modal-rows-user" >
+                        
+                        </div>
+                        <div class="col-md-12 column" id="modal-rows-article" >
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

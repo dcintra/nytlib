@@ -18,3 +18,11 @@ a {
 #navigation_float {
     position: fixed;
 }
+
+#searchbar {
+	border-radius: 0;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	box-shadow: none;
+}

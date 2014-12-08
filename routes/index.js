@@ -104,39 +104,81 @@ function getLists(res, lists, index) {
 }
 
 function findBooksFromGoodReads(query,res) {
-
-    query = encodeURI(query);
+   var books =[];
     // goodreads = "https://www.goodreads.com/search/index.xml?key=ouR8rzRRu8T2kt6UrrD9w&q="+query;
-    goodreads = "https://www.goodreads.com/search.xml?key=ouR8rzRRu8T2kt6UrrD9w&q=Ender%27s+Game"
+    goodreads = "https://www.goodreads.com/search.xml?key=ouR8rzRRu8T2kt6UrrD9w&q="+query
 
-    console.log(goodreads);
     request(goodreads, function (error, response, body) {
       if (!error && response.statusCode == 200) {
 
            parseString(body, function (err, result) {
-                console.log(result.GoodreadsResponse.search[0].results);
+                // console.log(result.GoodreadsResponse.search[0].results);
+                
+                    results = result.GoodreadsResponse.search[0].results[0].work;
+                    for (var i = 0; i < results.length; i++) {
+                        id = results[i].best_book[0].id[0]._;
+                        title = results[i].best_book[0].title[0];
+                        author = results[i].best_book[0].author[0].name[0];
+                        imgurl = results[i].best_book[0].image_url[0];
 
-               // var xmlDoc = libxmljs.parseXml(body);
-               // var gchild = xmlDoc.get('//title');
+                        books[i] = {
+                                        'id': id,
+                                        'title': title,
+                                        'author': author,
+                                        'book_image': imgurl,
+                                    }
 
-               //  // jbody = JSON.parse(body);
-               //  // var books = jbody.results.books;
-               //  // book_title = books[0].title;
+                    };
 
-               //  console.log(gchild.text());
+                        res.render('search', {
+                            books: books
+                      
+                        })
 
-                res.render('search', {
-                    // title: "Hardcover Fiction",
-                    // books: books
-                });
-            });
+
+             });
         };
     });
 }
 
-function getSnippetFromGoodReads() {
-    
-}
+// function getSnippetFromGoodReads(results, res, getDescription) {
+//     var bks =[];
+//     var descriptions = [];
+//     for (var i = 0; i < results.length; i++) {
+
+                                    
+//                             id = results[i].best_book[0].id[0]._;
+//                             title = results[i].best_book[0].title[0];
+//                             author = results[i].best_book[0].author[0].name[0];
+//                             imgurl = results[i].best_book[0].image_url[0];
+
+
+//                             bookurl = "https://www.goodreads.com/book/show/"+id+"?format=xml&key=ouR8rzRRu8T2kt6UrrD9w";
+
+//                            description = getDescription(bookurl);
+
+//                            descriptions[i] =description;
+
+//                            console.log(description);
+//                             // bks[i] = {
+//                             //     'id': id,
+//                             //     'description': description,
+//                             //     'title': title,
+//                             //     'author': author,
+//                             //     'book_image': imgurl,
+//                             // }
+
+//     };
+//     console.log(bks);
+//     console.log("bottom");
+//     // /renderBookResults(books, res);
+       
+        
+// }
+
+
+
+
 
 
 
