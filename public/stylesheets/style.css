@@ -11,10 +11,6 @@ a {
     display: inline;
 }
 
-.book img {
-    max-height: 128px;
-}
-
 #navigation_float {
     position: fixed;
 }
@@ -25,4 +21,43 @@ a {
 	border-left: none;
 	border-right: none;
 	box-shadow: none;
+}
+
+
+
+.book .thumbnail {
+    height: 350px;
+    background-size: 100% 100%;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.book h4 {
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.book h5 {
+    font-style: italic;
+    margin-top: 0px;
+}
+
+.book p {
+    line-height: 1.1em;
+    color: #666;
+}
+
+.book .thumbnail .caption {
+    display: none;
+}
+
+.book .thumbnail:hover .caption {
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
+    outline: 1px solid black;
+    outline-color: rgba(0, 0, 0, 0.4);
+    display: block;
+    position: absolute;
+    bottom: 21px;
+    left: 16px;
+    right: 16px;
 }

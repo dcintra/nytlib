@@ -2,6 +2,14 @@ $(document).ready(function() {
     function page_bookshelf() {
         bookshelf = renderShelf(getBooks());
         $('#content_block').html(bookshelf);
+        $('a.remove-from-shelf').click(function(event) {
+            event.preventDefault();
+            book = jQuery.parseJSON($(this).closest('.book').attr("data-json"));
+            store.remove(book.primary_isbn13);
+            $(this).closest('.book').fadeOut();
+            console.log('Removing book from shelf:');
+            console.log(book);
+        });
     }
 
     $('#nav_bookshelf').click(function(event) {
@@ -11,8 +19,10 @@ $(document).ready(function() {
 
     function img(book) {
         console.log(book);
-        placeholder = "http://placehold.it/85x128";
-        book_t = '<img src="%src%" />';
+        placeholder = "http://placehold.it/470x680&text=Missing%20Cover";
+        // book_t = '<img src="%src%" />';
+        book_t = '%src%';
+
         if(book.book_image != null ) {
             return book_t.replace('%src%', book.book_image);
         } else {
@@ -20,10 +30,16 @@ $(document).ready(function() {
         }
     }
 
-    function addBook(book) {
+    $('a.add-to-shelf').click(function(event) {
+        event.preventDefault();
+        book = jQuery.parseJSON($(this).closest('.book').attr("data-json"));
         store.set(book.primary_isbn13, book);
-        getBooks();
-    }
+        $(this).removeClass('btn-primary');
+        $(this).addClass('btn-success');
+        $(this).html('<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Added');
+        console.log('Adding book to shelf:');
+        console.log(book);
+    });
 
     function getBooks() {
         var list = {
@@ -38,15 +54,14 @@ $(document).ready(function() {
 
     function renderShelf(list) {
         t_book = [
-            '<li class="book" data-json="%json%">',
+            '<li class="book book-two" data-json="%json%">',
                 '<div class="col-md-4">',
-                    '<div class="thumbnail">',
-                        '%book_img%',
+                    '<div class="thumbnail" style="background-image: url(%book_img%)">',
                         '<div class="caption">',
                             '<h4>%title%</h4>',
                             '<h5>%author%</h5>',
                             '<p>%description%</p>',
-                            '<p><a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a></p>',
+                            '<p><a class="btn btn-default remove-from-shelf" href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</a> <a class="btn" href="#">Reviews</a></p>',
                         '</div>',
                     '</div>',
                 '</div>',
@@ -91,12 +106,4 @@ $(document).ready(function() {
         });
         return r_shelf;
     }
-
-    $('a.add-to-shelf').click(function(event) {
-        event.preventDefault();
-        book = jQuery.parseJSON($(this).closest('.book').attr("data-json"));
-        addBook(book);
-        console.log('Adding book to shelf:');
-        console.log(book);
-    });
 });
