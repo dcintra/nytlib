@@ -105,6 +105,11 @@ function getLists(res, lists, index) {
             } else {
                 getLists(res, lists, index+1);
             }
+        } else {
+             res.render('error', {
+                            
+                      
+                        });
         };
     });
 }
@@ -146,6 +151,11 @@ function findBooksFromGoodReads(query,res) {
 
 
              });
+        } else {
+             res.render('error', {
+                            
+                      
+                        });
         };
     });
 }
