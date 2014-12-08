@@ -51,8 +51,11 @@ function showErrorMsg(){
 }
 
 function showReview(response){
+	if(response == null || response.response.docs[0] == null){
+		showErrorMsg();
+		return;
+	}
 	var doc = response.response.docs[0];
-	// console.log(doc);
 	var headline = doc.headline.main;
 	console.log(doc.multimedia);
 	var img_url = 'http://www.nytimes.com/' + doc.multimedia[0].url;

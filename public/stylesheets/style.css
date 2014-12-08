@@ -79,3 +79,17 @@ a {
     left: 16px;
     right: 16px;
 }
+
+.rank_change_up {
+    float: right;
+    color: green;
+}
+
+.rank_change_down {
+    float: right;
+    color: red;
+}
+
+.rank {
+    float: right;
+}
