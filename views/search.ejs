@@ -44,21 +44,19 @@
                             %>
                             <li class="book">
                                 <div class="col-md-4">
-                                <div class="thumbnail">
-                                    <img src="<%= book_img %>" />
+                                <div class="thumbnail" style="background-image: url(<%= book_img %>)">
                                     <div class="caption">
                                         <h4>
-                                           <%= books[j].title %>
+                                           <%= books[i].title %>
                                         </h4>
                                         <h5>
-                                            <%= books[j].author %>
+                                            <%= books[i].author %>
                                         </h5>
-                                      
                                         <p>
-                                            <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                            <a class="btn btn-primary add-to-shelf" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Shelf</a> <a class="btn" href="#modal-container" onclick='javascript:callBookReview("<%= books[i].title %>","<%= books[i].author %>");' data-toggle="modal">Reviews</a>
                                         </p>
                                     </div>
-                                </div>
+                            </div>
                                 </div>
                             </li>
                         <% } %>
@@ -78,23 +76,20 @@
 
                         <li class="book" data-json="<%-JSON.stringify(books[j]).replace(/"/g, '&quot;') %>">
                             <div class="col-md-4">
-                            <div class="thumbnail">
-                                <img src="<%= book_img %>" />
-                                <div class="caption">
-                                    <h4>
-                                       <%= books[j].title %>
-                                    </h4>
-                                    <h5>
-                                        <%= books[j].author %>
-                                    </h5>
-                                    <!-- <p>
-                                        <%= books[j].description %>
-                                    </p> -->
-                                     <p>
-                                        <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-                                    </p>
-                                </div>
+                            <div class="thumbnail" style="background-image: url(<%= book_img %>)">
+                                    <div class="caption">
+                                        <h4>
+                                           <%= books[i].title %>
+                                        </h4>
+                                        <h5>
+                                            <%= books[i].author %>
+                                        </h5>
+                                        <p>
+                                            <a class="btn btn-primary add-to-shelf" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Shelf</a> <a class="btn" href="#modal-container" onclick='javascript:callBookReview("<%= books[i].title %>","<%= books[i].author %>");' data-toggle="modal">Reviews</a>
+                                        </p>
+                                    </div>
                             </div>
+
                             </div>
                         </li>
                     <% } %>
