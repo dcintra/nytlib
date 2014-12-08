@@ -75,6 +75,11 @@ router.get('/search/term=:query', function(req, res) {
 
 });
 
+router.get('/bookshelf', function(req, res) {
+  res.render('bookshelf', { 
+  });
+});
+
 
 function getLists(res, lists, index) {
     base = "http://api.nytimes.com/svc/books/v3/lists/";
