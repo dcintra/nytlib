@@ -18,7 +18,6 @@ a {
 
 #navigation_float {
     position: fixed;
-    margin-left: -15px;
 }
 
 #searchbar {
@@ -46,6 +45,7 @@ a {
     display: block;
     border-radius: 3px;
     margin: 2px;
+    font-size: 11px;
 }
 
 .nav-pills.nav-stacked ul li a:hover {

@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row" id="header">
             <div class="col-md-3">
                 <h1>NYT Lib</h1>
             </div>
@@ -15,9 +15,9 @@
                 <input valutype="text" class="form-control" id="searchbar" placeholder="Search for books by title, author, ISBN" method="POST">
             </div>
         </div>
+        <div class="row">
         <div class="col-md-3">
             <div id="navigation_float">
-                <h3>Navigation</h3>
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="/bookshelf">Bookshelf</a></li>
                     <li><a href="/">Bestseller Lists</a></li>
@@ -58,6 +58,7 @@
                             <% } %>
                         </div>
                 </div>
+        </div>
         </div>
     </div>
 

@@ -14,11 +14,6 @@ $(document).ready(function() {
 
     $.page_bookshelf = page_bookshelf;
 
-    $('#nav_bookshelf').click(function(event) {
-        event.preventDefault();
-        page_bookshelf();
-    });
-
     function img(book) {
         console.log(book);
         placeholder = "http://placehold.it/470x680&text=Missing%20Cover";

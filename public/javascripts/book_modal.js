@@ -46,7 +46,7 @@ function getReview(response,param){
 }
 
 function showErrorMsg(){
-	var msg = '<center style="color:red"><h3>No review available</center><h3></br><center><img src="images/failwhale.png" style="width:400px;height:400px;"/></center>';
+	var msg = '<center><h3>No review available</center><h3></br><center><img src="/images/failwhale.png" style="width:400px;height:400px;"/></center>';
 	$('#my_modal_contents').html(msg);
 }
 

@@ -58,7 +58,7 @@ var categories = [
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    getLists(res, categories.slice(0, 3), 0);
+    getLists(res, categories.slice(0, 6), 0);
 });
 
 router.get('/list/:slug', function(req, res) {
@@ -76,7 +76,7 @@ router.get('/search/term=:query', function(req, res) {
 });
 
 router.get('/bookshelf', function(req, res) {
-  res.render('bookshelf', { 
+  res.render('bookshelf', {
   });
 });
 
@@ -106,10 +106,9 @@ function getLists(res, lists, index) {
                 getLists(res, lists, index+1);
             }
         } else {
-             res.render('error', {
-                            
-                      
-                        });
+            console.log("ERROR!");
+            res.render('error', {
+            });
         };
     });
 }
@@ -124,7 +123,7 @@ function findBooksFromGoodReads(query,res) {
 
            parseString(body, function (err, result) {
                 // console.log(result.GoodreadsResponse.search[0].results);
-                
+
                     results = result.GoodreadsResponse.search[0].results[0].work;
                     for (var i = 0; i < results.length; i++) {
                         id = results[i].best_book[0].id[0]._;
@@ -146,15 +145,15 @@ function findBooksFromGoodReads(query,res) {
 
                         res.render('search', {
                             books: books
-                      
+
                         })
 
 
              });
         } else {
              res.render('error', {
-                            
-                      
+
+
                         });
         };
     });
@@ -165,7 +164,7 @@ function findBooksFromGoodReads(query,res) {
 //     var descriptions = [];
 //     for (var i = 0; i < results.length; i++) {
 
-                                    
+
 //                             id = results[i].best_book[0].id[0]._;
 //                             title = results[i].best_book[0].title[0];
 //                             author = results[i].best_book[0].author[0].name[0];
@@ -191,8 +190,8 @@ function findBooksFromGoodReads(query,res) {
 //     console.log(bks);
 //     console.log("bottom");
 //     // /renderBookResults(books, res);
-       
-        
+
+
 // }
 
 
