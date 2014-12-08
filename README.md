@@ -14,16 +14,25 @@ To run the webserver, enter the following into Terminal:
 TODO List
 =========
 
-1. 'Add to shelf' only if not on shelf
-2. Fixed top bar
-3. Bestseller as sublist
-4. Align search with logo
-5. Check to see if many lists works
-6. Bookshelf on it's own page
-7. Search button
-8. Reviews sometimes empty but not doing error, aka first gone girl
-9. Look into add to shelf from search
-10. Search navigation
+1. 'Add to shelf' only if not on shelf -Robert 
+5. Check to see if many lists works - Robert
+9. Look into add to shelf from search - Robert
+
+6. Bookshelf on it's own page - Dan/Robert
+
+2. Fixed top bar -Dan
+4. Align search with logo - Dan 
+7. Search button - Dan 
+
+3. Bestseller as sublist - Rupayan
+8. Reviews sometimes empty but not doing error, aka first gone girl - Rupayan
+
+
+
+
+Nice to Have:
+
+10. Search navigation - 
 
 60. Liked books
 70. Currently reading book
