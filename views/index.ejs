@@ -65,6 +65,7 @@
                                         <% if(books[i].rank_last_week != 0 && (books[i].rank_last_week > books[i].rank)) { %>
                                             <abbr title="Up by <%= books[i].rank_last_week - books[i].rank %>"><span class="glyphicon glyphicon-arrow-up rank_change_up" aria-hidden="true"></span></abbr>
                                         <% } %>
+                                        <div class="rank">#<%= books[i].rank %></div>
                                         <h4>
                                            <%= books[i].title %>
                                         </h4>
