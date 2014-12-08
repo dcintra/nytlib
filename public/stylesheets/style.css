@@ -3,6 +3,11 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+#header {
+    padding-top: 50px;
+    background-color: white;
+}
+
 a {
   color: #00B7FF;
 }
@@ -16,6 +21,8 @@ a {
 }
 
 #searchbar {
+    font-size: 18px;
+    margin-top: 20px;
 	border-radius: 0;
 	border-top: none;
 	border-left: none;
@@ -23,22 +30,24 @@ a {
 	box-shadow: none;
 }
 
-.inner-addon { 
-    position: relative; 
+.inner-addon {
+    position: relative;
 }
-.inner-addon .glyphicon {
+.inner-addon #searchbutton {
+  display: block;
+  width: 40px;
+  height: 40px;
   position: absolute;
   padding: 10px;
-  pointer-events: none;
   right: 0px;
 }
 
-.right-addon .glyphicon { 
+.right-addon #searchbutton {
 	right: 0px;
 }
 
-.right-addon input { 
-	padding-right: 30px; 
+.right-addon input {
+	padding-right: 30px;
 }
 
 
