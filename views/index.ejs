@@ -20,17 +20,14 @@
         </div>
         <div class="col-md-3">
             <div id="navigation_float">
-                <h3>Navigation</h3>
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="#" id="nav_bookshelf">Bookshelf</a></li>
-                    <li><a href="/">Bestseller Lists</a></li>
-                </ul>
-
-                <h3>Bestseller Lists</h3>
-                <ul class="nav nav-pills nav-stacked">
-                    <% for(var list_index=0; list_index<lists.length; list_index++) { %>
-                        <li><a href="#category_<%= list_index %>"><%= lists[list_index]['title'] %></a></li>
-                    <% } %>
+                    <li><a href="/">Bestseller Lists</a>
+                        <ul>
+                            <% for(var list_index=0; list_index<lists.length; list_index++) { %>
+                                <li><a href="#category_<%= list_index %>"><%= lists[list_index]['title'] %></a></li>
+                            <% } %>
+                    </li>
                 </ul>
             </div>
         </div>

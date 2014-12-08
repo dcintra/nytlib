@@ -12,6 +12,8 @@ $(document).ready(function() {
         });
     }
 
+    $.page_bookshelf = page_bookshelf;
+
     $('#nav_bookshelf').click(function(event) {
         event.preventDefault();
         page_bookshelf();
@@ -20,7 +22,6 @@ $(document).ready(function() {
     function img(book) {
         console.log(book);
         placeholder = "http://placehold.it/470x680&text=Missing%20Cover";
-        // book_t = '<img src="%src%" />';
         book_t = '%src%';
 
         if(book.book_image != null ) {
@@ -37,6 +38,9 @@ $(document).ready(function() {
         $(this).removeClass('btn-primary');
         $(this).addClass('btn-success');
         $(this).html('<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Added');
+        $('#nav_bookshelf').fadeOut('fast', function() {
+            $(this).fadeIn();
+        });
         console.log('Adding book to shelf:');
         console.log(book);
     });
@@ -61,7 +65,8 @@ $(document).ready(function() {
                             '<h4>%title%</h4>',
                             '<h5>%author%</h5>',
                             '<p>%description%</p>',
-                            '<p><a class="btn btn-default remove-from-shelf" href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</a> <a class="btn" href="#">Reviews</a></p>',
+                            '<p><a class="btn btn-default remove-from-shelf" href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</a>',
+                            '<a class="btn" href="#modal-container" onclick="javascript:callBookReview(&quot;%title%&quot;,&quot;%author%&quot;);" data-toggle="modal">Reviews</a>',
                         '</div>',
                     '</div>',
                 '</div>',
@@ -91,7 +96,9 @@ $(document).ready(function() {
                 'description': book.description,
                 'book_img': img(book)
             }, function(key, value) {
-                r_book = r_book.replace('%'+key+'%', value);
+                var find = '%'+key+'%';
+                var re = new RegExp(find, 'g');
+                r_book = r_book.replace(re, value);
             });
             books += r_book;
         });

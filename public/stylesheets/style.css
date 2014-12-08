@@ -18,6 +18,7 @@ a {
 
 #navigation_float {
     position: fixed;
+    margin-left: -15px;
 }
 
 #searchbar {
@@ -28,6 +29,28 @@ a {
 	border-left: none;
 	border-right: none;
 	box-shadow: none;
+}
+
+.nav-pills.nav-stacked ul {
+    padding-left: 5px;
+    margin-left: 10px;
+    border-left: 2px solid #eee;
+}
+
+.nav-pills.nav-stacked ul li {
+    list-style: none;
+}
+
+.nav-pills.nav-stacked ul li a {
+    padding: 5px;
+    display: block;
+    border-radius: 3px;
+    margin: 2px;
+}
+
+.nav-pills.nav-stacked ul li a:hover {
+    background-color: #eee;
+    text-decoration: none;
 }
 
 .inner-addon {
