@@ -34,7 +34,11 @@ $(document).ready(function() {
         $(this).addClass('btn-success');
         $(this).html('<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Added');
         $('#nav_bookshelf').fadeOut('fast', function() {
-            $(this).fadeIn();
+            $(this).addClass('alert-success').fadeIn('fast', function() {
+                $(this).fadeOut('fast', function() {
+                    $(this).removeClass('alert-success').fadeIn();
+                });
+            });
         });
         console.log('Adding book to shelf:');
         console.log(book);

@@ -2,11 +2,17 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+div.container {
+    width: 1140px;
+}
+
 #logo {
     height: 55px;
 }
-#logo h1 {
+#logo a h1 {
     position: fixed;
+    font-weight: bold;
+    color: black;
 }
 
 #header {
@@ -29,7 +35,7 @@ a {
 
 #searchbar {
     font-size: 18px;
-    margin-top: 20px;
+    margin-top: 21px;
 	border-radius: 0;
 	border-top: none;
 	border-left: none;
