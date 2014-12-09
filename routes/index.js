@@ -121,43 +121,38 @@ function findBooksFromGoodReads(query,res) {
     request(goodreads, function (error, response, body) {
       if (!error && response.statusCode == 200) {
             parseString(body, function (err, result) {
-                // console.log(result.GoodreadsResponse.search[0].results);
-
-                    results = result.GoodreadsResponse.search[0].results[0].work;
-                    if(results == null || results == undefined ){
-                        res.render('error', { });
-                        return;
-                    }
-                    for (var i = 0; i < results.length; i++) {
-                        id = results[i].best_book[0].id[0]._;
-                        title = results[i].best_book[0].title[0];
-                        author = results[i].best_book[0].author[0].name[0];
-                        imgurl = results[i].best_book[0].image_url[0];
-                        if(imgurl == "https://s.gr-assets.com/assets/nophoto/book/111x148-c93ac9cca649f584bf7c2539d88327a8.png"){
-                            imgurl = "http://placehold.it/470x680&text=Missing%20Cover"
-                        };
-
-                        books[i] = {
-                                        'id': id,
-                                        'title': title,
-                                        'author': author,
-                                        'book_image': imgurl,
-                                    }
-
+                results = result.GoodreadsResponse.search[0].results[0].work;
+                if(results == null || results == undefined ){
+                    res.render('error', { });
+                    return;
+                }
+                for (var i = 0; i < results.length; i++) {
+                    id = results[i].best_book[0].id[0]._;
+                    title = results[i].best_book[0].title[0];
+                    author = results[i].best_book[0].author[0].name[0];
+                    imgurl = results[i].best_book[0].image_url[0];
+                    if(imgurl == "https://s.gr-assets.com/assets/nophoto/book/111x148-c93ac9cca649f584bf7c2539d88327a8.png"){
+                        imgurl = "http://placehold.it/470x680&text=Missing%20Cover"
                     };
 
-                        res.render('search', {
-                            books: books
+                    books[i] = {
+                        'id': id,
+                        'title': title,
+                        'author': author,
+                        'description': '',
+                        'book_image': imgurl,
+                        'primary_isbn13': 'goodreads_'+id
+                    }
+                };
 
-                        })
+                res.render('search', {
+                    books: books
 
-
+                })
              });
         } else {
-             res.render('error', {
-
-
-                        });
+            res.render('error', {
+            });
         };
     });
 }
