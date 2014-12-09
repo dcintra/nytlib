@@ -82,6 +82,12 @@ $(document).ready(function() {
         ].join("\n");
 
         books = ""
+
+        if (list['books'].length == 0) {
+            books = '<div class="alert alert-info" role="alert"><strong>No books yet!</strong> Add books from bestseller lists or search.</div>';
+            books += '<div style="font-size: 300px; color: #eee; text-align: center; margin-top: 100px"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></div>';
+        }
+
         jQuery.each(list['books'], function(i, book) {
             r_book = t_book;
             $.each({
