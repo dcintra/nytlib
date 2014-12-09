@@ -6,6 +6,18 @@ div.container {
     width: 1140px;
 }
 
+#loremipsum {
+    padding: 20px;
+    text-align: left;
+}
+
+#loremipsum #text {
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+    font-size: 14px;
+}
+
 #logo {
     height: 55px;
 }

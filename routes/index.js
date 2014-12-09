@@ -80,7 +80,7 @@ router.get('/bookshelf', function(req, res) {
   });
 });
 
-router.get('/about', function(req, res) {
+router.get('/team', function(req, res) {
     res.render('about', {
     });
 });
