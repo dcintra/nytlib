@@ -2,6 +2,13 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+#logo {
+    height: 55px;
+}
+#logo h1 {
+    position: fixed;
+}
+
 #header {
     padding-top: 50px;
     background-color: white;
@@ -17,6 +24,7 @@ a {
 
 #navigation_float {
     position: fixed;
+    margin-top: 15px;
 }
 
 #searchbar {
@@ -31,7 +39,8 @@ a {
 
 .nav-pills.nav-stacked ul {
     padding-left: 5px;
-    margin-left: 10px;
+    margin: 10px;
+    margin-right: 0px;
     border-left: 2px solid #eee;
 }
 
