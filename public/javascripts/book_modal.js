@@ -14,12 +14,18 @@ function callAPI(url,method,param){
 }
 
 function callBookReview(title,author){
+	if(title.indexOf(':') != -1){
+		title = title.split(':')[0];
+	}
+	console.log(title);
+	console.log(author);
 	var url = 'http://api.nytimes.com/svc/books/v3/reviews.jsonp?api-key=' + rup_book_key + '&title=' + title;
 	url = encodeURI(url);
 	callAPI(url,getReview,author);
 }
 
 function callArticleSearch(review_url){
+	console.log(review_url);
 	var url = 'http://api.nytimes.com/svc/search/v2/articlesearch.jsonp?api-key=' + rup_article_key
 	+ '&fq=web_url:(\"' + review_url + '\")';
 	url = encodeURI(url);
